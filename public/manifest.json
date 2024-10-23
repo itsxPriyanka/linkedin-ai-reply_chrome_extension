@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "short_name": "LinkedIn AI Reply",
+  "name": "LinkedIn AI Reply Chrome Extension",
+  "version": "1.0",
+  "description": "A Chrome extension that assists users in generating replies to LinkedIn messages.",
+  "icons": {
+    "16": "./favicon.ico",
+    "48": "./logo192.png",
+    "128": "./logo512.png"
+  },
+  "action": {
+    "default_popup": "./index.html",
+    "default_icon": "./favicon.ico"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "background": {
+    "service_worker": "./background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.linkedin.com/*"
+      ],
+      "js": ["./contentScript.js"]
+    }
+  ],
+  
+  "host_permissions": [
+    "https://www.linkedin.com/*"
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/AI.svg",            
+        "assets/Insert.svg",       
+        "assets/Regenerate.svg",   
+        "assets/Vector.svg",        
+        "assets/icon.png"           
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
